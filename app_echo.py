@@ -1,7 +1,6 @@
 '''
 [LINEBot] 無敵小咪
 
-
 - Heroku 網址:
 https://venusean-linebot.herokuapp.com/callback
 '''
