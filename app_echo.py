@@ -2,22 +2,32 @@
 [LINEBot] 無敵小咪
 
 - Heroku 網址:
-https://venusean-linebot.herokuapp.com/
+https://venusean-linebot.herokuapp.com/callback
 '''
-
 
 from inspect import signature
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
+import configparser
+
 app = Flask(__name__)
 
 
-# 設定
-line_bot_api = LineBotApi(
-    'Dn3vefwx2MFm7rcB5z7J3psYODNV0VBAkr0szrkh8nv4pWBgBJnQEAvqZf571SXBRawH4HBMerUsob9mtewsBUY7Cf1N6EOk5hdSFGUp7A1ayr6KsuBFKQr9ieRW8gkHabCS4aIaAnBjBV6yKB64vwdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('d29f1d6448804ab36ba42486f335d950')
+# 基本設定
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+line_bot_api = LineBotApi(config.get(
+    'venusean-linebot',
+    'channel_access_token'
+))
+
+handler = WebhookHandler(config.get(
+    'venusean-linebot',
+    'channel_secret'
+))
 
 
 # 接收平台來的通知
