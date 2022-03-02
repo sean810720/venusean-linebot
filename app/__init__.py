@@ -1,3 +1,4 @@
+from app import routes, models_for_line
 from flask import Flask
 from linebot import LineBotApi, WebhookHandler
 import configparser
