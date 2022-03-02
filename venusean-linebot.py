@@ -91,9 +91,8 @@ def echo(event):
             jsons = json.loads(res.text)
 
             result = "本週有這幾部片:"
-
+            count = 1
             for movie in jsons:
-                count = 1
 
                 if count <= 10:
                     result += '\n {}. {} ({})'.format(count,
