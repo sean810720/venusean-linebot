@@ -67,10 +67,11 @@ def echo(event):
 
             # 抓出美元匯率
             usd_rate = soup.select(".rate-content-sight")[4].text.strip()
+            result = "目前美元匯率 {}".format(usd_rate)
 
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="目前美元匯率 {}".format(usd_rate))
+                TextSendMessage(text=result)
             )
 
         # 聊天垃圾話
