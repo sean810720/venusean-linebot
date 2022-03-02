@@ -83,6 +83,26 @@ def echo(event):
                 jsons['new_deaths']
             )
 
+        # 本週新片
+        elif "電影" in event.message.text or "新片" in event.message.text:
+            res = requests.get(
+                "https://movieshowapp-3def6.firebaseio.com/MovieData.json", verify=False)
+            res.encoding = 'utf8'
+            jsons = json.loads(res.text)
+
+            result = "本週有這幾部片:"
+
+            for movie in jsons:
+                count = 1
+
+                if count <= 10:
+                    result += '\n {}. {} ({})'.format(count,
+                                                      movie['title'],
+                                                      movie['imdb_rating'])
+                    count += 1
+                else:
+                    break
+
         # 聊天垃圾話
         elif "小咪" in event.message.text:
             trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
