@@ -53,7 +53,7 @@ def echo(event):
         elif event.message.text == "小咪" or event.message.text == "無敵小咪":
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="你好")
+                TextSendMessage(text="幹嘛")
             )
         else:
             pass
