@@ -57,7 +57,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def echo(event):
 
-    # 不回應 LINE 官方帳號
+    # 只回應 LINE 官方以外的帳號
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         result = ""
 
