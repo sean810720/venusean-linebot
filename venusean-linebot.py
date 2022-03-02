@@ -63,7 +63,8 @@ def echo(event):
         if "美元" in event.message.text:
 
             # 台銀匯率頁面
-            res = requests.get("https://rate.bot.com.tw/xrt?Lang=zh-TW")
+            res = requests.get(
+                "https://rate.bot.com.tw/xrt?Lang=zh-TW", verify=False)
             res.encoding = 'utf8'
             soup = BeautifulSoup(res.text, "html.parser")
 
