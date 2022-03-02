@@ -5,7 +5,7 @@
 https://venusean-linebot.herokuapp.com/callback
 '''
 
-
+# 共用
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
