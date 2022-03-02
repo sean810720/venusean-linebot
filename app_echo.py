@@ -46,5 +46,5 @@ def echo(event):
 
 
 # 主程式
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
