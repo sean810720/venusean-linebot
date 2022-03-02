@@ -5,11 +5,19 @@
 https://venusean-linebot.herokuapp.com/callback
 '''
 
+
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import configparser
+
+# 爬蟲
+import requests
+from bs4 import BeautifulSoup
+
+# 聊天垃圾話
+import random
 
 app = Flask(__name__)
 
@@ -49,20 +57,32 @@ def callback():
 def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
 
-        if event.message.text == "大盤指數":
+        # 美元匯率
+        if event.message.text == "美元匯率":
+
+            # 台銀匯率頁面
+            res = requests.get("https://rate.bot.com.tw/xrt?Lang=zh-TW")
+            res.encoding = 'utf8'
+            soup = BeautifulSoup(res.text, "html.parser")
+
+            # 抓出美元匯率
+            usd_rate = soup.select(".rate-content-sight")[4].text.strip()
+
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="目前大盤指數萬八上看兩萬")
+                TextSendMessage(text="目前美元匯率 {}".format(usd_rate))
             )
-        elif event.message.text == "美元匯率":
+
+        # 聊天垃圾話
+        elif "小咪" in event.message.text:
+            trash_talks = ['幹嘛', '您好', '今天天氣不錯喔', '吃飽了嗎', '早安']
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="目前美元匯率 28.01")
-            )
-        elif event.message.text == "小咪" or event.message.text == "無敵小咪":
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="幹嘛")
+                TextSendMessage(
+                    text=trash_talks[
+                        random.randint(0, len(trash_talks))
+                    ]
+                )
             )
         else:
             pass
