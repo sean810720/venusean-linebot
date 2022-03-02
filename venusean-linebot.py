@@ -84,7 +84,7 @@ def echo(event):
             )
 
         # 本週新片
-        elif "電影" in event.message.text or "新片" in event.message.text:
+        elif "電影" in event.message.text or "新片" in event.message.text or "好片" in event.message.text:
             res = requests.get(
                 "https://movieshowapp-3def6.firebaseio.com/MovieData.json", verify=False)
             res.encoding = 'utf8'
