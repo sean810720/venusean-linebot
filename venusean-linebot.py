@@ -15,6 +15,7 @@ import configparser
 # 爬蟲
 import requests
 from bs4 import BeautifulSoup
+import json
 
 # 聊天垃圾話
 import random
@@ -70,8 +71,8 @@ def echo(event):
             usd_rate = soup.select(".rate-content-sight")[4].text.strip()
             result = "目前美元匯率 {}".format(usd_rate)
 
-        # 疫情數字
-        elif "疫情數字" in event.message.text:
+        # 疫情日報
+        elif "疫情" in event.message.text:
             res = requests.get(
                 "https://ghost-island-ab1d8-default-rtdb.firebaseio.com/covid-19/0.json", verify=False)
             res.encoding = 'utf8'
