@@ -117,7 +117,7 @@ def echo(event):
                 random.randint(0, len(trash_talks))
             ]
 
-        elif "小咪唬爛" in event.message.text:
+        elif "唬爛" in event.message.text:
             res = requests.post(
                 "https://api.howtobullshit.me/bullshit", verify=False)
             res.encoding = 'utf8'
