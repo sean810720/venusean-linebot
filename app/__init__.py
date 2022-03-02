@@ -1,4 +1,3 @@
-from inspect import signature
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 import configparser
