@@ -1,1 +1,1 @@
-web: gunicorn venusean-linebot:app --preload
+web: gunicorn main:app --preload

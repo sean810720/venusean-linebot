@@ -8,5 +8,5 @@ https://venusean-linebot.herokuapp.com/callback
 from app import app
 
 # 主程式
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
