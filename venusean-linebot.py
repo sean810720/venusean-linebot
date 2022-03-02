@@ -76,9 +76,11 @@ def echo(event):
             res = requests.get(
                 "https://ghost-island-ab1d8-default-rtdb.firebaseio.com/covid-19/0.json", verify=False)
             res.encoding = 'utf8'
-            json = json.loads(res.text)
-            result = "今天本土確診{}人\n死亡{}人".format(
-                json['new_confirmed'], json['new_deaths'])
+            jsons = json.loads(res.text)
+            result = "今天本土確診{}人，死亡{}人".format(
+                jsons['new_confirmed'],
+                jsons['new_deaths']
+            )
 
         # 聊天垃圾話
         elif "小咪" in event.message.text:
