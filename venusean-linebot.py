@@ -109,7 +109,7 @@ def echo(event):
                     break
 
         # 聊天垃圾話
-        elif event.message.text == '小咪唬爛':
+        elif event.message.text == '無敵小咪唬爛':
             res = requests.post(
                 "https://api.howtobullshit.me/bullshit", verify=False)
             res.encoding = 'utf8'
