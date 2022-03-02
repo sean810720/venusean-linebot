@@ -1,12 +1,16 @@
 '''
 [LINEBot] 無敵小咪
+
+- Heroku 網址:
+https://venusean-linebot.herokuapp.com/
 '''
+
 
 from inspect import signature
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
 app = Flask(__name__)
 
 
@@ -19,7 +23,7 @@ handler = WebhookHandler('d29f1d6448804ab36ba42486f335d950')
 # 接收平台來的通知
 @app.route("/callback", method=['POST'])
 def callback():
-    signature = request.headers['X-Line-Sinature']
+    signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
     app.logger.info("Request body:" + body)
 
@@ -29,6 +33,16 @@ def callback():
         abort(400)
 
     return 'OK'
+
+
+# 學你說話
+@handler.add(MessageEvent, message=TextMessage)
+def echo(event):
+    if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
 
 
 # 主程式
