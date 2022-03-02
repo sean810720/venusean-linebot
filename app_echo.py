@@ -35,14 +35,18 @@ def callback():
     return 'OK'
 
 
-# 學你說話
+# 回應區
 @handler.add(MessageEvent, message=TextMessage)
 def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
+
+        if event.message.text == "股市":
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="目前大盤指數: 18000")
+            )
+        else:
+            pass
 
 
 # 主程式
