@@ -56,6 +56,8 @@ def callback():
 # 回應區
 @handler.add(MessageEvent, message=TextMessage)
 def echo(event):
+
+    # 不回應 LINE 官方帳號
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         result = ""
 
