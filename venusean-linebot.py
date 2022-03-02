@@ -70,6 +70,8 @@ def echo(event):
 
             # 抓出美元匯率
             usd_rate = soup.select(".rate-content-sight")[4].text.strip()
+
+            # 組出結果
             result = "目前美元匯率 {}".format(usd_rate)
 
         # 疫情日報
@@ -78,6 +80,8 @@ def echo(event):
                 "https://ghost-island-ab1d8-default-rtdb.firebaseio.com/covid-19/0.json", verify=False)
             res.encoding = 'utf8'
             jsons = json.loads(res.text)
+
+            # 組出結果
             result = "今天本土確診{}人，死亡{}人".format(
                 jsons['new_confirmed'],
                 jsons['new_deaths']
@@ -90,10 +94,10 @@ def echo(event):
             res.encoding = 'utf8'
             jsons = json.loads(res.text)
 
+            # 組出結果
             result = "本週有這幾部片:\n"
             count = 1
             for movie in jsons:
-
                 if count <= 20:
                     result += '\n {}. {} ({})'.format(count,
                                                       movie['title'],
@@ -105,6 +109,8 @@ def echo(event):
         # 聊天垃圾話
         elif "小咪" in event.message.text:
             trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
+
+            # 組出結果
             result = trash_talks[
                 random.randint(0, len(trash_talks))
             ]
