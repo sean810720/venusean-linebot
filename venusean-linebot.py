@@ -58,7 +58,7 @@ def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
 
         # 美元匯率
-        if event.message.text == "美元匯率":
+        if "美元" in event.message.text:
 
             # 台銀匯率頁面
             res = requests.get("https://rate.bot.com.tw/xrt?Lang=zh-TW")
@@ -76,7 +76,7 @@ def echo(event):
 
         # 聊天垃圾話
         elif "小咪" in event.message.text:
-            trash_talks = ['Hi', '幹嘛', '您好', '今天天氣不錯喔', '吃飽了嗎', '早安']
+            trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(
