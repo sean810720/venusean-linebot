@@ -89,7 +89,7 @@ def echo(event):
                 jsons['new_deaths']
             )
 
-        # 本週新片
+        # 目前新片
         elif "電影" in event.message.text or "新片" in event.message.text or "好片" in event.message.text:
             res = requests.get(
                 "https://movieshowapp-3def6.firebaseio.com/MovieData.json", verify=False)
@@ -97,7 +97,7 @@ def echo(event):
             jsons = json.loads(res.text)
 
             # 組出結果
-            result = "本週有這幾部片:\n"
+            result = "目前有這幾部新片:\n"
             count = 1
             for movie in jsons:
                 if count <= 20:
