@@ -109,15 +109,7 @@ def echo(event):
                     break
 
         # 聊天垃圾話
-        elif "小咪" in event.message.text:
-            trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
-
-            # 組出結果
-            result = trash_talks[
-                random.randint(0, len(trash_talks))
-            ]
-
-        elif "唬爛" in event.message.text:
+        elif event.message.text == '小咪唬爛':
             res = requests.post(
                 "https://api.howtobullshit.me/bullshit", verify=False)
             res.encoding = 'utf8'
@@ -125,6 +117,14 @@ def echo(event):
             # 組出結果
             result = res.text.replace('Bad Request', '')
             result = result.replace('&nbsp;', '')
+
+        elif "小咪" in event.message.text:
+            trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
+
+            # 組出結果
+            result = trash_talks[
+                random.randint(0, len(trash_talks))
+            ]
 
         # 回應用戶
         if len(result) > 0:
