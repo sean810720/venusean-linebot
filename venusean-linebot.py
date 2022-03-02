@@ -56,6 +56,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+        result = ""
 
         # 美元匯率
         if "美元" in event.message.text:
@@ -69,25 +70,28 @@ def echo(event):
             usd_rate = soup.select(".rate-content-sight")[4].text.strip()
             result = "目前美元匯率 {}".format(usd_rate)
 
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=result)
-            )
+        # 疫情數字
+        elif "疫情數字" in event.message.text:
+            res = requests.get(
+                "https://ghost-island-ab1d8-default-rtdb.firebaseio.com/covid-19/0.json", verify=False)
+            res.encoding = 'utf8'
+            json = json.loads(res.text)
+            result = "今天本土確診{}人\n死亡{}人".format(
+                json['new_confirmed'], json['new_deaths'])
 
         # 聊天垃圾話
         elif "小咪" in event.message.text:
             trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
+            result = trash_talks[
+                random.randint(0, len(trash_talks))
+            ]
+
+        # 回應用戶
+        if len(result) > 0:
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(
-                    text=trash_talks[
-                        random.randint(0, len(trash_talks))
-                    ]
-                )
+                TextSendMessage(text=result)
             )
-
-        else:
-            pass
 
 
 # 主程式
