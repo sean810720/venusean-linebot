@@ -117,6 +117,15 @@ def echo(event):
                 random.randint(0, len(trash_talks))
             ]
 
+        elif "小咪唬爛" in event.message.text:
+            res = requests.post(
+                "https://api.howtobullshit.me/bullshit", verify=False)
+            res.encoding = 'utf8'
+
+            # 組出結果
+            result = res.text.replace('Bad Request', '')
+            result = result.replace('&nbsp;', '')
+
         # 回應用戶
         if len(result) > 0:
             line_bot_api.reply_message(
