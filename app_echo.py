@@ -21,7 +21,7 @@ handler = WebhookHandler('d29f1d6448804ab36ba42486f335d950')
 
 
 # 接收平台來的通知
-@app.route("/callback", method=['POST'])
+@app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
