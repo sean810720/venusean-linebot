@@ -90,11 +90,11 @@ def echo(event):
             res.encoding = 'utf8'
             jsons = json.loads(res.text)
 
-            result = "本週有這幾部片:"
+            result = "本週有這幾部片:\n"
             count = 1
             for movie in jsons:
 
-                if count <= 10:
+                if count <= 20:
                     result += '\n {}. {} ({})'.format(count,
                                                       movie['title'],
                                                       movie['imdb_rating'])
