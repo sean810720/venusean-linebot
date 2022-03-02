@@ -75,7 +75,7 @@ def echo(event):
 
         # 聊天垃圾話
         elif "小咪" in event.message.text:
-            trash_talks = ['幹嘛', '您好', '今天天氣不錯喔', '吃飽了嗎', '早安']
+            trash_talks = ['Hi', '幹嘛', '您好', '今天天氣不錯喔', '吃飽了嗎', '早安']
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(
