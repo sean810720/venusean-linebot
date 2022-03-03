@@ -83,8 +83,8 @@ def echo(event):
             res.encoding = 'utf8'
             jsons = json.loads(res.text)
 
-        # 台電
-        elif "台電" in event.message.text:
+        # 台電供電狀況
+        elif "台電" in event.message.text or "電力" in event.message.text:
             res = requests.get(
                 "https://ghost-island-ab1d8-default-rtdb.firebaseio.com/power/0.json", verify=False)
             res.encoding = 'utf8'
