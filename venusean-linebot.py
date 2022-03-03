@@ -129,8 +129,7 @@ def echo(event):
 
             # 組出結果
             result = res.text.replace('Bad Request', '')
-            result = result.replace('&nbsp;', '')
-            result = result.strip()
+            result = result.replace('&nbsp;', '').strip()
 
         elif "無敵小咪" in event.message.text:
             trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
