@@ -126,7 +126,7 @@ def echo(event):
             result = result.replace('&nbsp;', '')
             result = result.strip()
 
-        elif "小咪" in event.message.text:
+        elif "無敵小咪" in event.message.text:
             trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
 
             # 組出結果
