@@ -62,7 +62,7 @@ def echo(event):
         result = ""
 
         # 美元匯率
-        if "美元" in event.message.text:
+        if "美元" in event.message.text or "美金" in event.message.text:
 
             # 台銀匯率頁面
             res = requests.get(
