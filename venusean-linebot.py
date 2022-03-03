@@ -83,6 +83,12 @@ def echo(event):
             res.encoding = 'utf8'
             jsons = json.loads(res.text)
 
+            # 組出結果
+            result = "最新本土確診{}人\n死亡{}人".format(
+                jsons['new_confirmed'],
+                jsons['new_deaths']
+            )
+
         # 台電供電狀況
         elif "台電" in event.message.text or "電力" in event.message.text:
             res = requests.get(
