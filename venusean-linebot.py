@@ -83,10 +83,17 @@ def echo(event):
             res.encoding = 'utf8'
             jsons = json.loads(res.text)
 
+        # 台電
+        elif "台電" in event.message.text:
+            res = requests.get(
+                "https://ghost-island-ab1d8-default-rtdb.firebaseio.com/power/0.json", verify=False)
+            res.encoding = 'utf8'
+            jsons = json.loads(res.text)
+
             # 組出結果
-            result = "今天本土確診{}人，死亡{}人".format(
-                jsons['new_confirmed'],
-                jsons['new_deaths']
+            result = "目前台電供電狀況: {} ({}%)".format(
+                jsons['power_status'],
+                jsons['curr_util_rate']
             )
 
         # 目前新片
