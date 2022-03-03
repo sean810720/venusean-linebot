@@ -131,12 +131,13 @@ def echo(event):
             result = res.text.replace('Bad Request', '')
             result = result.replace('&nbsp;', '').strip()
 
+        # 打招呼
         elif "無敵小咪" in event.message.text:
-            trash_talks = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
+            greetings = ['Hi', '幹嘛', '您好', '天氣不錯喔', '吃飽了嗎', '安安', '收到']
 
             # 組出結果
-            result = trash_talks[
-                random.randint(0, len(trash_talks))
+            result = greetings[
+                random.randint(0, len(greetings))
             ]
 
         # 回應用戶
