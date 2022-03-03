@@ -114,9 +114,9 @@ def echo(event):
             count = 1
             for movie in jsons:
                 if count <= 20:
-                    result += '\n {}. {} ({})'.format(count,
-                                                      movie['title'],
-                                                      movie['imdb_rating'])
+                    result += '\n{}. {} ({})'.format(count,
+                                                     movie['title'],
+                                                     movie['imdb_rating'])
                     count += 1
                 else:
                     break
