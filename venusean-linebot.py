@@ -91,7 +91,7 @@ def echo(event):
             jsons = json.loads(res.text)
 
             # 組出結果
-            result = "目前台電供電狀況: {} ({}%)".format(
+            result = "目前供電狀況:\n {} ({}%)".format(
                 jsons['power_status'],
                 jsons['curr_util_rate']
             )
