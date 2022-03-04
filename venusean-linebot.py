@@ -121,15 +121,15 @@ def echo(event):
                 else:
                     break
 
-        # 聊天垃圾話
-        elif event.message.text == '無敵小咪唬爛':
-            res = requests.post(
-                "https://api.howtobullshit.me/bullshit", verify=False)
-            res.encoding = 'utf8'
+        # # 聊天垃圾話
+        # elif event.message.text == '無敵小咪唬爛':
+        #     res = requests.post(
+        #         "https://api.howtobullshit.me/bullshit", verify=False)
+        #     res.encoding = 'utf8'
 
-            # 組出結果
-            result = res.text.replace('Bad Request', '')
-            result = result.replace('&nbsp;', '').strip()
+        #     # 組出結果
+        #     result = res.text.replace('Bad Request', '')
+        #     result = result.replace('&nbsp;', '').strip()
 
         # 打招呼
         elif "無敵小咪" in event.message.text:
