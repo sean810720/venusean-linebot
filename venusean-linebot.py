@@ -86,7 +86,7 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出日幣匯率
-            usd_rate = soup.select(".rate-content-sight")[32].text.strip()
+            usd_rate = soup.select(".rate-content-sight")[18].text.strip()
 
             # 組出結果
             result = "目前日元匯率 {}".format(usd_rate)
