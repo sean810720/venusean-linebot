@@ -76,6 +76,21 @@ def echo(event):
             # 組出結果
             result = "目前美元匯率 {}".format(usd_rate)
 
+        # 日幣匯率
+        elif "日元" in event.message.text or "日幣" in event.message.text:
+
+            # 台銀匯率頁面
+            res = requests.get(
+                "https://rate.bot.com.tw/xrt?Lang=zh-TW", verify=False)
+            res.encoding = 'utf8'
+            soup = BeautifulSoup(res.text, "html.parser")
+
+            # 抓出日幣匯率
+            usd_rate = soup.select(".rate-content-sight")[32].text.strip()
+
+            # 組出結果
+            result = "目前日元匯率 {}".format(usd_rate)
+
         # 疫情日報
         elif "疫情" in event.message.text:
             res = requests.get(
