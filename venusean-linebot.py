@@ -70,7 +70,7 @@ def echo(event):
             res.encoding = 'utf8'
             soup = BeautifulSoup(res.text, "html.parser")
 
-            # 抓出美元匯率
+            # 抓出美金匯率
             usd_rate = soup.select(".rate-content-sight")[4].text.strip()
 
             # 組出結果
