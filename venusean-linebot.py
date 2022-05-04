@@ -71,7 +71,7 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出大盤指數
-            stock_rate = soup.select("p.jsx-1693030123")[0].text.strip()
+            stock_rate = soup.select(".market-index").text.strip()
 
             # 組出結果
             result = "目前台股指數 {}".format(stock_rate)
