@@ -66,12 +66,12 @@ def echo(event):
 
             # 大盤指數頁面
             res = requests.get(
-                "https://www.cnyes.com/twstock/", verify=False)
+                "https://tw.stock.yahoo.com/", verify=False)
             res.encoding = 'utf8'
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出大盤指數
-            stock_rate = soup.select(".market-index").text.strip()
+            stock_rate = soup.select(".Fw(600)").text.strip()
 
             # 組出結果
             result = "目前台股指數 {}".format(stock_rate)
