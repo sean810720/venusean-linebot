@@ -62,7 +62,22 @@ def echo(event):
         result = ""
 
         # 美元匯率
-        if "美元" in event.message.text or "美金" in event.message.text:
+        if "大盤" in event.message.text or "台股" in event.message.text:
+
+            # 大盤指數頁面
+            res = requests.get(
+                "https://www.cnyes.com/twstock/", verify=False)
+            res.encoding = 'utf8'
+            soup = BeautifulSoup(res.text, "html.parser")
+
+            # 抓出大盤指數
+            stock_rate = soup.select("p.jsx-1693030123")[0].text.strip()
+
+            # 組出結果
+            result = "目前台股指數 {}".format(stock_rate)
+
+        # 美元匯率
+        elif "美元" in event.message.text or "美金" in event.message.text:
 
             # 台銀匯率頁面
             res = requests.get(
@@ -138,7 +153,7 @@ def echo(event):
                     break
 
         # 聊天垃圾話
-        elif event.message.text == '無敵小咪唬爛':
+        elif event.message.text == '無敵小咪聊天':
             res = requests.post(
                 "https://api.howtobullshit.me/bullshit", verify=False)
             res.encoding = 'utf8'
