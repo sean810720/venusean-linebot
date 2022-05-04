@@ -61,7 +61,7 @@ def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         result = ""
 
-        # 美元匯率
+        # 台股指數
         if "大盤" in event.message.text or "台股" in event.message.text:
 
             # 大盤指數頁面
