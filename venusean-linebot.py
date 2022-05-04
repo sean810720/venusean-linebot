@@ -76,7 +76,7 @@ def echo(event):
             stock_rate = soup.select(".clr-rd")[2].text.strip()
 
             # 組出結果
-            result = "目前台股大盤指數 {} ({}) ({})".format(
+            result = "目前台股大盤指數 {} ({} {})".format(
                 stock_index, stock_updown, stock_rate)
 
         # 美元匯率
