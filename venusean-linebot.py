@@ -89,10 +89,11 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出美金匯率
-            usd_rate = soup.select(".rate-content-sight")[4].text.strip()
+            rate_buy = soup.select(".rate-content-sight")[4].text.strip()
+            rate_sell = soup.select(".rate-content-sight")[3].text.strip()
 
             # 組出結果
-            result = "目前美元匯率 {}".format(usd_rate)
+            result = "目前美元匯率 \n買 {} \n賣 {}".format(rate_buy, rate_sell)
 
         # 日幣匯率
         elif "日元" in event.message.text or "日幣" in event.message.text:
@@ -104,10 +105,11 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出日幣匯率
-            usd_rate = soup.select(".rate-content-sight")[18].text.strip()
+            rate_buy = soup.select(".rate-content-sight")[18].text.strip()
+            rate_sell = soup.select(".rate-content-sight")[17].text.strip()
 
             # 組出結果
-            result = "目前日元匯率 {}".format(usd_rate)
+            result = "目前日元匯率 \n買 {} \n賣 {}".format(rate_buy, rate_sell)
 
         # 疫情日報
         elif "疫情" in event.message.text:
@@ -117,7 +119,7 @@ def echo(event):
             jsons = json.loads(res.text)
 
             # 組出結果
-            result = "最新本土確診{}人\n死亡{}人".format(
+            result = "最新本土疫情 \n確診 {} 人 \n死亡 {} 人".format(
                 jsons['new_confirmed'],
                 jsons['new_deaths']
             )
@@ -130,7 +132,7 @@ def echo(event):
             jsons = json.loads(res.text)
 
             # 組出結果
-            result = "目前台電狀況:\n{} ({}%)".format(
+            result = "目前台電狀況 \n{} ({}%)".format(
                 jsons['power_status'],
                 jsons['curr_util_rate']
             )
@@ -143,7 +145,7 @@ def echo(event):
             jsons = json.loads(res.text)
 
             # 組出結果
-            result = "目前有這幾部新片:\n"
+            result = "目前有這幾部新片\n"
             count = 1
             for movie in jsons:
                 if count <= 20:
