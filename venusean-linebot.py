@@ -71,11 +71,11 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出大盤指數
-            stock_rate = soup.select(
-                ".priceinfo.deal.fwbig.clr-rd").text.strip()
+            stock_index = soup.select(".clr-rd")[0].text.strip()
+            stock_rate = soup.select(".clr-rd")[1].text.strip()
 
             # 組出結果
-            result = "目前台股指數 {}".format(stock_rate)
+            result = "目前台股指數 {} ({})".format(stock_index, stock_rate)
 
         # 美元匯率
         elif "美元" in event.message.text or "美金" in event.message.text:
