@@ -66,12 +66,12 @@ def echo(event):
 
             # 大盤指數頁面
             res = requests.get(
-                "https://tw.stock.yahoo.com/", verify=False)
+                "https://histock.tw/%E5%8F%B0%E8%82%A1%E5%A4%A7%E7%9B%A4", verify=False)
             res.encoding = 'utf8'
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出大盤指數
-            stock_rate = soup.select(".Fw(600)")[0].text.strip()
+            stock_rate = soup.select(".clr-rd").text.strip()
 
             # 組出結果
             result = "目前台股指數 {}".format(stock_rate)
