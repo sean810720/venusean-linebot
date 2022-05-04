@@ -119,7 +119,7 @@ def echo(event):
             jsons = json.loads(res.text)
 
             # 組出結果
-            result = "最新本土疫情 \n確診 {} 人 \n死亡 {} 人".format(
+            result = "最新本土疫情 \n確診 {} \n死亡 {}".format(
                 jsons['new_confirmed'],
                 jsons['new_deaths']
             )
