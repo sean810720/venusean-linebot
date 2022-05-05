@@ -90,16 +90,14 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出本期發票號碼
+            awards = []
             award_title = soup.select(".etw-on")[0].text.strip()[:-5]
-            special_award = soup.select(".etw-tbiggest")[0].text.strip()
-            big_award = soup.select(".etw-tbiggest")[1].text.strip()
-            head_award_1 = soup.select(".etw-tbiggest")[2].text.strip()
-            head_award_2 = soup.select(".etw-tbiggest")[3].text.strip()
-            head_award_3 = soup.select(".etw-tbiggest")[4].text.strip()
+            for award in soup.select(".etw-tbiggest"):
+                awards.append(award.text.strip())
 
             # 組出結果
             result = "本期中獎發票 ({})\n \n特別獎 {} \n特獎 {} \n\n頭獎 \n{} \n{} \n{}".format(
-                award_title, special_award, big_award, head_award_1, head_award_2, head_award_3)
+                award_title, awards[0], awards[1], awards[2], awards[3], awards[4])
 
         # 台股指數
         elif "大盤" in event.message.text or "台股" in event.message.text:
