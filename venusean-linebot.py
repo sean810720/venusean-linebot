@@ -71,18 +71,14 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出油價
-            oil_92 = soup.select(
-                ".oil-box")[0].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
-            oil_95 = soup.select(
-                ".oil-box")[1].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '').replace('+', '')
-            oil_98 = soup.select(
-                ".oil-box")[2].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
-            oil_diesel = soup.select(
-                ".oil-box")[3].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
+            oils = []
+            for oil in soup.select(".oil-box"):
+                oils.append(oil.text.strip().replace('\n', '').replace(' ', '').replace(
+                    '油', '油 ').replace('元', '').replace('汽油', '').replace('+', ''))
 
             # 組出結果
             result = "目前汽油價格 \n{} \n{} \n{} \n{}".format(
-                oil_92, oil_95, oil_98, oil_diesel)
+                oils[0], oils[1], oils[2], oils[3])
 
         # 統一發票中獎碼
         elif "發票" in event.message.text or "發票對獎" in event.message.text or "統一發票" in event.message.text:
