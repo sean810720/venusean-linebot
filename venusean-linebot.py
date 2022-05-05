@@ -72,13 +72,13 @@ def echo(event):
 
             # 抓出油價
             oil_92 = soup.select(
-                ".oil-box")[0].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+                ".oil-box")[0].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
             oil_95 = soup.select(
-                ".oil-box")[1].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+                ".oil-box")[1].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
             oil_98 = soup.select(
-                ".oil-box")[2].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+                ".oil-box")[2].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
             oil_diesel = soup.select(
-                ".oil-box")[3].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+                ".oil-box")[3].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
 
             # 組出結果
             result = "目前油價\n \n{} \n{} \n{} \n{}".format(
