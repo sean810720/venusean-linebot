@@ -109,13 +109,13 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出大盤指數
-            stock_index = soup.select(".clr-rd")[0].text.strip()
-            stock_updown = soup.select(".clr-rd")[1].text.strip()
-            stock_rate = soup.select(".clr-rd")[2].text.strip()
+            stocks = []
+            for stock in soup.select(".clr-rd"):
+                stocks.append(stock.text.strip())
 
             # 組出結果
             result = "目前台股大盤指數 {} \n漲跌 {} \n漲幅 {}".format(
-                stock_index, stock_updown, stock_rate)
+                stocks[0], stocks[1], stocks[2])
 
         # 美元匯率
         elif "美元" in event.message.text or "美金" in event.message.text:
