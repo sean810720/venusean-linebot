@@ -61,7 +61,7 @@ def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         result = ""
 
-        # 油價查詢
+        # 油價
         if "油價" in event.message.text:
 
             # 全國加油站頁面
