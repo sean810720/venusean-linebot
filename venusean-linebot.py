@@ -61,8 +61,31 @@ def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         result = ""
 
+        # 油價查詢
+        if "油價" in event.message.text:
+
+            # 全國加油站頁面
+            res = requests.get(
+                "https://www.npcgas.com.tw/home/Oil_today", verify=False)
+            res.encoding = 'utf8'
+            soup = BeautifulSoup(res.text, "html.parser")
+
+            # 抓出油價
+            oil_92 = soup.select(
+                ".oil-box")[0].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+            oil_95 = soup.select(
+                ".oil-box")[1].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+            oil_98 = soup.select(
+                ".oil-box")[2].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+            oil_diesel = soup.select(
+                ".oil-box")[3].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ')
+
+            # 組出結果
+            result = "目前油價\n \n{} \n{} \n{} \n{}".format(
+                oil_92, oil_95, oil_98, oil_diesel)
+
         # 統一發票中獎碼
-        if "發票" in event.message.text or "發票對獎" in event.message.text or "統一發票" in event.message.text:
+        elif "發票" in event.message.text or "發票對獎" in event.message.text or "統一發票" in event.message.text:
 
             # 財政部頁面
             res = requests.get(
