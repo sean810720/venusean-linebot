@@ -61,8 +61,28 @@ def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         result = ""
 
+        # 統一發票中獎碼
+        if "發票" in event.message.text or "統一發票" in event.message.text:
+
+            # 大盤指數頁面
+            res = requests.get(
+                "https://invoice.etax.nat.gov.tw/", verify=False)
+            res.encoding = 'utf8'
+            soup = BeautifulSoup(res.text, "html.parser")
+
+            # 抓出大盤指數
+            special_award = soup.select(".etw-tbiggest")[0].text.strip()
+            big_award = soup.select(".etw-tbiggest")[1].text.strip()
+            head_award_1 = soup.select(".etw-tbiggest")[2].text.strip()
+            head_award_2 = soup.select(".etw-tbiggest")[3].text.strip()
+            head_award_3 = soup.select(".etw-tbiggest")[4].text.strip()
+
+            # 組出結果
+            result = "本期發票號碼 \n特別獎 {} \n特獎 {} \n頭獎 \n{} \n{} \n{}".format(
+                special_award, big_award, head_award_1, head_award_2, head_award_3)
+
         # 台股指數
-        if "大盤" in event.message.text or "台股" in event.message.text:
+        elif "大盤" in event.message.text or "台股" in event.message.text:
 
             # 大盤指數頁面
             res = requests.get(
