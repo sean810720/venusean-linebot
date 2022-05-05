@@ -17,7 +17,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-# 聊天垃圾話
+# 聊天
 import random
 
 app = Flask(__name__)
