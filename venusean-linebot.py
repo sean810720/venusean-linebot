@@ -81,7 +81,7 @@ def echo(event):
                 ".oil-box")[3].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
 
             # 組出結果
-            result = "目前油價\n \n{} \n{} \n{} \n{}".format(
+            result = "目前汽油價格 \n{} \n{} \n{} \n{}".format(
                 oil_92, oil_95, oil_98, oil_diesel)
 
         # 統一發票中獎碼
