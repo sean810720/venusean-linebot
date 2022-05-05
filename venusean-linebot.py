@@ -61,8 +61,15 @@ def echo(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         result = ""
 
+        if "座標" in event.message.text:
+            lat = str(event.message.latitude)
+            lon = str(event.message.longitude)
+
+            # 組出結果
+            result = "您的座標位置 \n{}, {}".format(lat, lon)
+
         # 油價
-        if "油價" in event.message.text or "中油" in event.message.text:
+        elif "油價" in event.message.text or "中油" in event.message.text:
 
             # 全國加油站頁面
             res = requests.get(
