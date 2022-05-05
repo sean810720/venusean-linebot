@@ -79,7 +79,7 @@ def echo(event):
             head_award_3 = soup.select(".etw-tbiggest")[4].text.strip()
 
             # 組出結果
-            result = "本期發票號碼 ({})\n \n特別獎 {} \n特獎 {} \n\n頭獎 \n{} \n{} \n{}".format(
+            result = "本期中獎發票 ({})\n \n特別獎 {} \n特獎 {} \n\n頭獎 \n{} \n{} \n{}".format(
                 award_title, special_award, big_award, head_award_1, head_award_2, head_award_3)
 
         # 台股指數
