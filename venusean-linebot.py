@@ -64,7 +64,7 @@ def echo(event):
         # 統一發票中獎碼
         if "發票" in event.message.text or "統一發票" in event.message.text:
 
-            # 大盤指數頁面
+            # 財政部頁面
             res = requests.get(
                 "https://invoice.etax.nat.gov.tw/", verify=False)
             res.encoding = 'utf8'
