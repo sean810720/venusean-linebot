@@ -66,7 +66,7 @@ def echo(event):
             lon = str(event.message.longitude)
 
             # 組出結果
-            result = "您的座標位置 \n{}, {}".format(str(event.message))
+            result = "您的座標位置 \n{}".format(str(event.message))
 
         # 油價
         elif "油價" in event.message.text or "中油" in event.message.text:
