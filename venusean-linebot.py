@@ -74,7 +74,7 @@ def echo(event):
             oil_92 = soup.select(
                 ".oil-box")[0].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
             oil_95 = soup.select(
-                ".oil-box")[1].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
+                ".oil-box")[1].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '').replace('+', '')
             oil_98 = soup.select(
                 ".oil-box")[2].text.strip().replace('\n', '').replace(' ', '').replace('油', '油 ').replace('元', '').replace('汽油', '')
             oil_diesel = soup.select(
