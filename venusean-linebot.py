@@ -70,7 +70,7 @@ def echo(event):
             res.encoding = 'utf8'
             soup = BeautifulSoup(res.text, "html.parser")
 
-            # 抓出大盤指數
+            # 抓出本期發票號碼
             special_award = soup.select(".etw-tbiggest")[0].text.strip()
             big_award = soup.select(".etw-tbiggest")[1].text.strip()
             head_award_1 = soup.select(".etw-tbiggest")[2].text.strip()
