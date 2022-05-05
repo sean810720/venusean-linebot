@@ -62,7 +62,7 @@ def echo(event):
         result = ""
 
         # 油價
-        if "油價" in event.message.text:
+        if "油價" in event.message.text or "中油" in event.message.text:
 
             # 全國加油站頁面
             res = requests.get(
