@@ -110,7 +110,7 @@ def echo(event):
 
             # 抓出大盤指數
             stocks = []
-            for stock in soup.select(".clr-gr"):
+            for stock in soup.select(".fwbig"):
                 stocks.append(stock.text.strip())
 
             # 組出結果
