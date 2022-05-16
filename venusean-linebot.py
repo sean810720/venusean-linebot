@@ -158,7 +158,7 @@ def echo(event):
             res.encoding = 'utf8'
             soup = BeautifulSoup(res.text, "html.parser")
 
-            # 抓出日幣匯率
+            # 抓出南非幣匯率
             rate_buy = soup.select(".rate-content-sight")[20].text.strip()
             rate_sell = soup.select(".rate-content-sight")[19].text.strip()
 
