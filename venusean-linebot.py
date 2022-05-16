@@ -159,8 +159,8 @@ def echo(event):
             soup = BeautifulSoup(res.text, "html.parser")
 
             # 抓出日幣匯率
-            rate_buy = soup.select(".rate-content-sight")[22].text.strip()
-            rate_sell = soup.select(".rate-content-sight")[21].text.strip()
+            rate_buy = soup.select(".rate-content-sight")[20].text.strip()
+            rate_sell = soup.select(".rate-content-sight")[19].text.strip()
 
             # 組出結果
             result = "目前南非幣匯率 \n買 {} \n賣 {}".format(rate_buy, rate_sell)
