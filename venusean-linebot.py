@@ -149,6 +149,22 @@ def echo(event):
             # 組出結果
             result = "目前日元匯率 \n買 {} \n賣 {}".format(rate_buy, rate_sell)
 
+        # 南非幣匯率
+        elif "南非幣" in event.message.text:
+
+            # 台銀匯率頁面
+            res = requests.get(
+                "https://rate.bot.com.tw/xrt?Lang=zh-TW", verify=False)
+            res.encoding = 'utf8'
+            soup = BeautifulSoup(res.text, "html.parser")
+
+            # 抓出日幣匯率
+            rate_buy = soup.select(".rate-content-sight")[22].text.strip()
+            rate_sell = soup.select(".rate-content-sight")[21].text.strip()
+
+            # 組出結果
+            result = "目前南非幣匯率 \n買 {} \n賣 {}".format(rate_buy, rate_sell)
+
         # 疫情日報
         elif "疫情" in event.message.text:
             res = requests.get(
